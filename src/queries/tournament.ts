@@ -7,4 +7,4 @@ const all = async () => {
 
   return tournaments;
 };
-export default all;
+export { all };

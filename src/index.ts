@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import queryLogger from "./utility/query-logger";
 import tournament from "./routes/tournament";
+import user from "./routes/user";
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(queryLogger);
 app.use(express.json());
 
 app.use("/", tournament);
+app.use("/", user);
 
 app.listen(process.env.PORT, () => {
   console.info(`Server running on ${process.env.DB_HOST}:${process.env.PORT}`);

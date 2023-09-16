@@ -1,13 +1,13 @@
+import { UserCreate, create } from "../queries/user";
 import express, { Request, Response, Router } from "express";
 
-import { all } from "../queries/tournament";
 import { errorInfo } from "../utility/general";
 
 const router: Router = express.Router();
 
-router.get("/tournaments", async (_: Request, res: Response) => {
+router.post("/user", async (req: Request, res: Response) => {
   try {
-    res.status(200).send(await all());
+    res.status(200).send((await create(req.body as UserCreate)) || {});
   } catch (e: any) {
     res.status(400).send({
       message: `An error was encountered${errorInfo(e)}`,

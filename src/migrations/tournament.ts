@@ -1,9 +1,7 @@
 import Tournament from "../models/tournament";
 
-// #TODO: test using migrations
+// #TODO: create npm command to run migrations
 const tournament = async () => {
-  console.log("sequelize.sync()");
-
   try {
     Tournament.sync().then(() => console.log("Sync complete"));
 

@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../sequelize";
 
-const Tournament = sequelize.define("Tournament", {
+const User = sequelize.define("User", {
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -17,14 +17,22 @@ const Tournament = sequelize.define("Tournament", {
       notEmpty: true,
     },
   },
-  name: {
+  gcpToken: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true,
     validate: {
       notEmpty: true,
     },
+  },
+  username: {
+    type: DataTypes.STRING,
+    allowNull: false,
     unique: true,
+    validate: {
+      notEmpty: true,
+    },
   },
 });
 
-export default Tournament;
+export default User;
