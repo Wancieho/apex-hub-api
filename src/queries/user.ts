@@ -1,4 +1,6 @@
+import { InputError } from "../errors";
 import User from "../models/user";
+import { inputValidation } from "../utility/general";
 import { v4 as uuidv4 } from "uuid";
 
 export type UserCreate = {
@@ -6,14 +8,10 @@ export type UserCreate = {
   username: string;
 };
 
-const create = async ({ gcpToken, username }: UserCreate) => {
-  if (!gcpToken) {
-    throw new Error("User create - 'gcpToken' must be defined");
-  }
+const create = async (inputs: UserCreate) => {
+  inputValidation(inputs, ["gcpToken", "username"], "User create");
 
-  if (!username) {
-    throw new Error("User create - 'username' must be defined");
-  }
+  const { gcpToken, username } = inputs;
 
   const user = await User.create({
     uuid: uuidv4(),
@@ -29,13 +27,11 @@ const create = async ({ gcpToken, username }: UserCreate) => {
 };
 
 const find = async (uuid: string) => {
-  if (!uuid) {
-    throw new Error("User find - 'uuid' must be defined");
-  }
+  inputValidation(uuid, ["uuid"], "User find");
 
   const user = await User.findOne({
     attributes: ["username"],
-    where: { id: uuid },
+    where: { uuid },
   });
 
   return user;

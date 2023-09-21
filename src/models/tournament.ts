@@ -31,6 +31,17 @@ const Tournament = sequelize.define("Tournament", {
       notEmpty: true,
     },
   },
+  start_date: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
+  end_date: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
 });
 
 export default Tournament;

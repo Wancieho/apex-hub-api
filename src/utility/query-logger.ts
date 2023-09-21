@@ -4,7 +4,7 @@ import moment from "moment";
 
 const queryLogger = (req: Request, _: Response, next: NextFunction) => {
   process.env.CONSOLE_LOGGING === "true" &&
-    console.log(
+    console.info(
       `${req.protocol}://${req.get("host")}${
         req.originalUrl
       } ${moment().format()}`

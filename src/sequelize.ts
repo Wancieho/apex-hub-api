@@ -14,6 +14,6 @@ const sequelize = new Sequelize(
   }
 );
 
-process.env.CONSOLE_LOGGING === "true" && console.log(sequelize.config);
+process.env.CONSOLE_LOGGING === "true" && console.info(sequelize.config);
 
 export default sequelize;
