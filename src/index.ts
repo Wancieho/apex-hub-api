@@ -17,5 +17,5 @@ app.use("/", tournament);
 app.use("/", user);
 
 app.listen(process.env.PORT, () => {
-  console.info(`Server running on ${process.env.DB_HOST}:${process.env.PORT}`);
+  console.info(`Server running on ${process.env.SERVER}:${process.env.PORT}`);
 });
