@@ -8,6 +8,17 @@ export type UserCreate = {
   username: string;
 };
 
+const find = async (uuid: string) => {
+  inputValidation(uuid, ["uuid"], "User find");
+
+  const user = await User.findOne({
+    attributes: ["uuid", "username"],
+    where: { uuid },
+  });
+
+  return user;
+};
+
 const create = async (inputs: UserCreate) => {
   inputValidation(inputs, ["gcpToken", "username"], "User create");
 
@@ -24,17 +35,6 @@ const create = async (inputs: UserCreate) => {
   delete cleaned.id;
 
   return cleaned;
-};
-
-const find = async (uuid: string) => {
-  inputValidation(uuid, ["uuid"], "User find");
-
-  const user = await User.findOne({
-    attributes: ["username"],
-    where: { uuid },
-  });
-
-  return user;
 };
 
 export { create, find };

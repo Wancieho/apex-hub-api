@@ -1,6 +1,5 @@
 import { InputError } from "../errors";
 import Tournament from "../models/tournament";
-import User from "../models/user";
 import { find } from "./user";
 import { inputValidation } from "../utility/general";
 import { v4 as uuidv4 } from "uuid";
@@ -10,6 +9,14 @@ export type TournamentCreate = {
   user_uuid: string;
   name: string;
   start_date: string;
+};
+
+const all = async () => {
+  const tournaments = await Tournament.findAll({
+    attributes: ["uuid", "user_uuid", "name", "start_date"],
+  });
+
+  return tournaments;
 };
 
 const create = async (inputs: TournamentCreate) => {
@@ -37,14 +44,6 @@ const create = async (inputs: TournamentCreate) => {
   delete cleaned.id;
 
   return cleaned;
-};
-
-const all = async () => {
-  const tournaments = await Tournament.findAll({
-    attributes: ["uuid", "user_uuid", "name", "start_date"],
-  });
-
-  return tournaments;
 };
 
 export { create, all };
