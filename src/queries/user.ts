@@ -8,11 +8,11 @@ export type UserCreate = {
 
 const create = async ({ gcpToken, username }: UserCreate) => {
   if (!gcpToken) {
-    throw new Error("GCP token must be defined");
+    throw new Error("User create - 'gcpToken' must be defined");
   }
 
   if (!username) {
-    throw new Error("Username must be defined");
+    throw new Error("User create - 'username' must be defined");
   }
 
   const user = await User.create({
@@ -30,7 +30,7 @@ const create = async ({ gcpToken, username }: UserCreate) => {
 
 const find = async (uuid: string) => {
   if (!uuid) {
-    throw new Error("UUID must be defined");
+    throw new Error("User find - 'uuid' must be defined");
   }
 
   const user = await User.findOne({

@@ -1,7 +1,7 @@
 import Tournament from "../models/tournament";
 
 // #TODO: create npm command to run migrations
-const tournament = async () => {
+const TournamentMigration = async () => {
   try {
     Tournament.sync().then(() => console.log("Sync complete"));
 
@@ -10,4 +10,4 @@ const tournament = async () => {
     return { msg: "Table creation failed" };
   }
 };
-export default tournament;
+export default TournamentMigration;

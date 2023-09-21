@@ -17,13 +17,19 @@ const Tournament = sequelize.define("Tournament", {
       notEmpty: true,
     },
   },
+  user_uuid: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
       notEmpty: true,
     },
-    unique: true,
   },
 });
 
