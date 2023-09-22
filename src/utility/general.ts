@@ -8,7 +8,7 @@ export const errorInfo = (e: any): string => {
   }
 
   if (e?.original?.errno === 1062) {
-    return ": duplicate data";
+    return ": data input is unique and already exists";
   }
 
   return "Unknown error";
