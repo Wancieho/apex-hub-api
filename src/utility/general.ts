@@ -1,7 +1,7 @@
 import { InputError } from "../errors";
 
 export const errorInfo = (e: any): string => {
-  console.error("\x1b[31m%s\x1b[0m", e?.message || e);
+  console.error("\x1b[31m%s\x1b[0m", e?.original || e?.message || e);
 
   if (e instanceof InputError) {
     return `: ${e?.message}`;
