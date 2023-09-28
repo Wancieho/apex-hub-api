@@ -42,6 +42,22 @@ const Tournament = sequelize.define("Tournament", {
     type: DataTypes.DATE,
     allowNull: true,
   },
+  approved: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: true,
+    validate: {
+      notEmpty: true,
+    },
+  },
+  active: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: true,
+    validate: {
+      notEmpty: true,
+    },
+  },
 });
 
 export default Tournament;
