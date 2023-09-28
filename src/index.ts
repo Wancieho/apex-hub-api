@@ -1,4 +1,3 @@
-import RunMigrations from "./migrations/run";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
@@ -13,8 +12,6 @@ const app = express();
 app.use(cors());
 app.use(queryLogger);
 app.use(express.json());
-
-// RunMigrations();
 
 app.use("/", tournament);
 app.use("/", user);

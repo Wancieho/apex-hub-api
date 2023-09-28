@@ -5,8 +5,10 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "",
-    "dev": "nodemon src/index.ts  --trace-warnings"
+    "build": "tsc",
+    "dev": "nodemon src/index.ts  --trace-warnings",
+    "migrations": "npm run build && node dist/database/migrations/index.js",
+    "seeds": "npm run migrations && node dist/database/seeds/index.js"
   },
   "author": "",
   "license": "ISC",
